@@ -17,5 +17,15 @@ export default function App() {
   useEffect(() => {
     fetchProducts();
   }, []);
-  return <div className="App"></div>;
+  return (
+    <div>
+      {products.length > 0 && (
+        <div className="products">
+          {products.map((item) => {
+            return <span>{item.title}</span>;
+          })}
+        </div>
+      )}
+    </div>
+  );
 }
