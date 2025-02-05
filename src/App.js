@@ -25,9 +25,6 @@ export default function App() {
     setPage(pageNo);
   };
 
-  const prevPageHandler = (pageNo) => {
-    console.log(pageNo);
-  };
   return (
     <div>
       {products.length > 0 && (
@@ -44,7 +41,7 @@ export default function App() {
       )}
       {products.length > 0 && (
         <div className="pagination">
-          <span onClick={() => prevPageHandler(page)}>◀️</span>
+          <span onClick={() => selectPageHandler(page - 1)}>◀️</span>
           {[...Array(Math.ceil(products.length / 10))].map((_, idx) => {
             return (
               <span
@@ -57,7 +54,7 @@ export default function App() {
             );
           })}
 
-          <span>▶️</span>
+          <span onClick={() => selectPageHandler(page + 1)}>▶️</span>
         </div>
       )}
     </div>
