@@ -38,3 +38,7 @@
 .page__selected {
   background-color: rgb(220, 220, 220);
 }
+
+.pagination__disabele {
+  opacity: 0;
+}

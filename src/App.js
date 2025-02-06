@@ -22,7 +22,8 @@ export default function App() {
   }, []);
 
   const selectPageHandler = (pageNo) => {
-    setPage(pageNo);
+    if (pageNo >= 1 && pageNo <= products.length / 10 && pageNo != page)
+      setPage(pageNo);
   };
 
   return (
@@ -41,7 +42,12 @@ export default function App() {
       )}
       {products.length > 0 && (
         <div className="pagination">
-          <span onClick={() => selectPageHandler(page - 1)}>◀️</span>
+          <span
+            className={page > 1 ? " " : "pagination__disabele"}
+            onClick={() => selectPageHandler(page - 1)}
+          >
+            ◀️
+          </span>
           {[...Array(Math.ceil(products.length / 10))].map((_, idx) => {
             return (
               <span
@@ -54,7 +60,14 @@ export default function App() {
             );
           })}
 
-          <span onClick={() => selectPageHandler(page + 1)}>▶️</span>
+          <span
+            className={
+              page < products.length / 10 ? "" : "pagination__disabele"
+            }
+            onClick={() => selectPageHandler(page + 1)}
+          >
+            ▶️
+          </span>
         </div>
       )}
     </div>
